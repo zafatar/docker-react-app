@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t zafatar/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true zafatar/docker-react npm run test -- --coverage
